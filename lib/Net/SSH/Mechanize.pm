@@ -10,13 +10,12 @@ use AnyEvent::Subprocess;
 use Carp qw(croak);
 our @CARP_NOT = qw(AnyEvent AnyEvent::Subprocess Coro::AnyEvent);
 
-use version; our $VERSION = qv('0.1');
+use version; our $VERSION = qv('0.1.1');
 
-{
-    # Stop our carp errors from being reported within AnyEvent::Coro
-    package Coro::AnyEvent;
-    our @CARP_NOT = qw(AnyEvent::CondVar);
-}
+
+# Stop our carp errors from being reported within AnyEvent::Coro
+@Coro::AnyEvent::CARP_NOT = qw(AnyEvent::CondVar);
+
 
 #$AnyEvent::Log::FILTER->level("fatal");
 
@@ -163,7 +162,7 @@ Net::SSH::Mechanize - asynchronous ssh command invocation
 
 =head1 VERSION
 
-This document describes C<Net::SSH::Mechanize> version 0.1
+This document describes C<Net::SSH::Mechanize> version 0.1.1
 
 
 =head1 SYNOPSIS
@@ -409,12 +408,12 @@ Net::SSH::Expect>, L<Net::SSH::Perl>, L<POE::Component::OpenSSH>, L<App::MrShell
 
 =head1 AUTHOR
 
-Nick Stokoe  C<< <npw@cpan.org> >>
+Nick Stokoe  C<< <wulee@cpan.org> >>
 
 
 =head1 LICENCE AND COPYRIGHT
 
-Copyright (c) 2011, Nick Stokoe C<< <npw@cpan.org> >>. All rights reserved.
+Copyright (c) 2011, Nick Stokoe C<< <wulee@cpan.org> >>. All rights reserved.
 
 This module is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself. See L<perlartistic>.
