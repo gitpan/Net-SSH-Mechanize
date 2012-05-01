@@ -1,6 +1,8 @@
 package Net::SSH::Mechanize::ConnectParams;
 use Moose;
 
+our $VERSION = '0.1.2'; # VERSION
+
 has 'host' => (
     isa => 'Str',
     is => 'rw',
@@ -44,6 +46,10 @@ __END__
 =head1 NAME
 
 Net::SSH::Mechanize::ConnectParams - encapsulates information about an ssh connection
+
+=head1 VERSION
+
+version 0.1.2
 
 =head1 SYNOPSIS
 
@@ -128,4 +134,3 @@ Copyright (c) 2011, Nick Stokoe C<< <wulee@cpan.org> >>. All rights reserved.
 
 This module is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself. See L<perlartistic>.
-

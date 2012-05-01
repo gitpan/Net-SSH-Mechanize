@@ -1,69 +1,53 @@
+
 use strict;
 use warnings;
-use Module::Build;
 
-{ # define a handy rscan_dir function
-    my $manifest_skip = qr/(?!)/; # this regex always fails 
-    if (open my $fh, '<', 'MANIFEST.SKIP')
-    {
-        # map /.*/ chomps newlines, since . doesn't match EOLs
-        $manifest_skip = join '|', map /(.*)/, <$fh>;
-        close $fh;
-        $manifest_skip = qr/$manifest_skip/;
-    }
+use Module::Build 0.2808;
 
-    sub rscan_dir
-    {
-        grep !/$manifest_skip/, @{ Module::Build->rscan_dir(@_) };
-    }
-}
 
-my $builder = Module::Build->new
-    (module_name         => 'Net::SSH::Mechanize',
-     license             => 'artistic',
-     dist_author         => 'Nick Stokoe <wulee@cpan.org>',
-     dist_version_from   => 'lib/Net/SSH/Mechanize.pm',
-     dist_abstract       => 'Asynchronous ssh command invocation',
-     create_readme       => 1,
-     create_makefile_pl  => 'traditional',
-     meta_merge          =>
-     {
-         resources =>
-         {
-             repository =>
-                'https://github.com/wu-lee/Net-SSH-Mechanize',
-        },
-        keywords  => [ 'anyevent', 'ssh', 'coro', 'sudo' ],
-     },
-     configure_requires => 
-     {
-         'Module::Build' => 0.28,
-     },
-     build_requires => 
-     {
-         'Module::Build' => 0.28,
-     },
-     requires => 
-     {
-         'Test::More' => 0,
-         'version'    => 0.77,
-         'Moose' => 0,
-         'MooseX::Params::Validate' => 0,
-         'AnyEvent' => 0,
-         'AnyEvent::Subprocess' => 0,
-         'Coro' => 0, # for Multi
-     },
-     recommends => 
-     {
-         'Test::Pod' => 1.14,
-         'Test::Pod::Coverage' => 1.04,
-         
-         # If you want gofer to be able to prompt for passwords:
-         'Term::ReadKey' => 0,
-     },
-     test_files         => [ rscan_dir('t', '\.t$'),
-                             rscan_dir('xt', '\.t$') ],
-     add_to_cleanup      => [ 'Net-SSH-Mechanize-*' ],
-    );
+my %module_build_args = (
+  "build_requires" => {
+    "English" => 0,
+    "File::Find" => 0,
+    "FindBin" => 0,
+    "Getopt::Long" => 0,
+    "Module::Build" => "0.2808",
+    "Pod::Coverage::TrustPod" => 0,
+    "Test::More" => 0,
+    "Text::ParseWords" => 0,
+    "strict" => 0,
+    "warnings" => 0
+  },
+  "configure_requires" => {
+    "Module::Build" => "0.2808"
+  },
+  "dist_abstract" => "asynchronous ssh command invocation ",
+  "dist_author" => [
+    "Nick Stokoe <wulee\@cpan.org>"
+  ],
+  "dist_name" => "Net-SSH-Mechanize",
+  "dist_version" => "0.1.2",
+  "license" => "perl",
+  "module_name" => "Net::SSH::Mechanize",
+  "recommends" => {
+    "Term::ReadKey" => 0,
+    "Test::Pod" => "1.14",
+    "Test::Pod::Coverage" => "1.04"
+  },
+  "recursive_test_files" => 1,
+  "requires" => {
+    "AnyEvent" => 0,
+    "AnyEvent::Subprocess" => 0,
+    "AnyEvent::Subprocess::Running" => 0,
+    "Carp" => 0,
+    "Coro" => 0,
+    "Moose" => 0,
+    "MooseX::Params::Validate" => 0
+  },
+  "script_files" => []
+);
 
-$builder->create_build_script();
+
+my $build = Module::Build->new(%module_build_args);
+
+$build->create_build_script;

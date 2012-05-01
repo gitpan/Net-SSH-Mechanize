@@ -5,6 +5,8 @@ use AnyEvent;
 use Carp qw(croak);
 our @CARP_NOT = qw(Net::SSH::Mechanize AnyEvent);
 
+our $VERSION = '0.1.2'; # VERSION
+
 extends 'AnyEvent::Subprocess::Running';
 
 my $passwd_prompt_re = qr/assword:\s*/;
@@ -15,7 +17,7 @@ my $sudo_initial_prompt_re = qr/^.*?\Q$ \E$/m;
 # Create a random text delimiter
 # We want chars A-Z, a-z, 0-9, _- => 26+26+10 = 64 different characters.
 # First we generate a random string of ASCII chars 1..65,
-my $delim = pack "W*", map { int(rand 64)+1 } 1..20;
+my $delim = pack "C*", map { int(rand 64)+1 } 1..20;
 
 # Then we map it to the characters we want.
 $delim =~ tr/\x01-\x40/A-Za-z0-9_-/;
@@ -445,6 +447,10 @@ __END__
 
 Net::SSH::Mechanize::Session - manage a running ssh process.
 
+=head1 VERSION
+
+version 0.1.2
+
 =head1 SYNOPSIS
 
 This class represents a sunning C<ssh> process. It is a subclass of
@@ -555,4 +561,3 @@ Copyright (c) 2011, Nick Stokoe C<< <wulee@cpan.org> >>. All rights reserved.
 
 This module is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself. See L<perlartistic>.
-

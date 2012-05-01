@@ -1,8 +1,8 @@
 package Net::SSH::Mechanize;
-use AnyEvent;
 #use AnyEvent::Log;
 #use Coro;
 use Moose;
+use AnyEvent;
 use Net::SSH::Mechanize::ConnectParams;
 use Net::SSH::Mechanize::Session;
 use AnyEvent::Subprocess;
@@ -10,12 +10,10 @@ use AnyEvent::Subprocess;
 use Carp qw(croak);
 our @CARP_NOT = qw(AnyEvent AnyEvent::Subprocess Coro::AnyEvent);
 
-use version; our $VERSION = qv('0.1.1');
-
-
 # Stop our carp errors from being reported within AnyEvent::Coro
 @Coro::AnyEvent::CARP_NOT = qw(AnyEvent::CondVar);
 
+our $VERSION = '0.1.2'; # VERSION
 
 #$AnyEvent::Log::FILTER->level("fatal");
 
@@ -162,8 +160,7 @@ Net::SSH::Mechanize - asynchronous ssh command invocation
 
 =head1 VERSION
 
-This document describes C<Net::SSH::Mechanize> version 0.1.1
-
+version 0.1.2
 
 =head1 SYNOPSIS
 

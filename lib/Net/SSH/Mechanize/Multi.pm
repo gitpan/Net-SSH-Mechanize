@@ -4,6 +4,8 @@ use Net::SSH::Mechanize;
 use Carp qw(croak);
 use Coro;
 
+our $VERSION = '0.1.2'; # VERSION
+
 ######################################################################
 # attributes
 
@@ -122,6 +124,10 @@ __END__
 =head1 NAME
 
 Net::SSH::Mechanize::Multi - parallel ssh invocation 
+
+=head1 VERSION
+
+version 0.1.2
 
 =head1 SYNOPSIS
 
@@ -311,5 +317,3 @@ Copyright (c) 2011, Nick Stokoe C<< <wulee@cpan.org> >>. All rights reserved.
 
 This module is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself. See L<perlartistic>.
-
-
