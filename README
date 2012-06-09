@@ -2,7 +2,7 @@ NAME
     Net::SSH::Mechanize - asynchronous ssh command invocation
 
 VERSION
-    version 0.1.2
+    version 0.1.3
 
 SYNOPSIS
     Somewhat like "POE::Component::OpenSSH", "SSH::Batch",
@@ -199,6 +199,11 @@ INSTANCE METHODS
 =head2 "logout"
     These methods exist here for convenience; they delegate to the
     equivalent "Net::SSH::Mechanize::Session" methods.
+
+KNOWN ISSUES
+    "unexpected stderr from command: stderr output" in test output
+        Something I haven't yet figured out how to banish properly. However,
+        it does appear to be harmless. Patches welcome.
 
 SEE ALSO
     There are a lot of related tools, and this is just in Perl. Probably the

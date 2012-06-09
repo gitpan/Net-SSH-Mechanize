@@ -13,7 +13,7 @@ our @CARP_NOT = qw(AnyEvent AnyEvent::Subprocess Coro::AnyEvent);
 # Stop our carp errors from being reported within AnyEvent::Coro
 @Coro::AnyEvent::CARP_NOT = qw(AnyEvent::CondVar);
 
-our $VERSION = '0.1.2'; # VERSION
+our $VERSION = '0.1.3'; # VERSION
 
 #$AnyEvent::Log::FILTER->level("fatal");
 
@@ -160,7 +160,7 @@ Net::SSH::Mechanize - asynchronous ssh command invocation
 
 =head1 VERSION
 
-version 0.1.2
+version 0.1.3
 
 =head1 SYNOPSIS
 
@@ -392,6 +392,18 @@ instantiated or will not have any effect on anything thereafter.
 
 These methods exist here for convenience; they delegate to the
 equivalent C<Net::SSH::Mechanize::Session> methods.
+
+
+=head1 KNOWN ISSUES
+
+=over 4
+
+=item "unexpected stderr from command: stderr output" in test output
+
+Something I haven't yet figured out how to banish properly. However,
+it does appear to be harmless. Patches welcome.
+
+=back
 
 =head1 SEE ALSO
 

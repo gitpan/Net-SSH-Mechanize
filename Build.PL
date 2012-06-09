@@ -7,6 +7,7 @@ use Module::Build 0.2808;
 
 my %module_build_args = (
   "build_requires" => {
+    "Config" => 0,
     "English" => 0,
     "File::Find" => 0,
     "FindBin" => 0,
@@ -26,7 +27,7 @@ my %module_build_args = (
     "Nick Stokoe <wulee\@cpan.org>"
   ],
   "dist_name" => "Net-SSH-Mechanize",
-  "dist_version" => "0.1.2",
+  "dist_version" => "0.1.3",
   "license" => "perl",
   "module_name" => "Net::SSH::Mechanize",
   "recommends" => {

@@ -5,7 +5,7 @@ use AnyEvent;
 use Carp qw(croak);
 our @CARP_NOT = qw(Net::SSH::Mechanize AnyEvent);
 
-our $VERSION = '0.1.2'; # VERSION
+our $VERSION = '0.1.3'; # VERSION
 
 extends 'AnyEvent::Subprocess::Running';
 
@@ -449,7 +449,7 @@ Net::SSH::Mechanize::Session - manage a running ssh process.
 
 =head1 VERSION
 
-version 0.1.2
+version 0.1.3
 
 =head1 SYNOPSIS
 
